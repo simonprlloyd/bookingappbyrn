@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a0a0a">
 <meta name="description" content="Book your appointment with Bryan — Dallas, TX barber. Professional cuts, walk-ins welcome, appointments preferred.">
-<title>Book with Bryan — Dallas, TX</title>
+<title>Book with Bryan — Urban Cutz Dallas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,153 +24,90 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
   --r:12px;--r2:18px;--r3:26px;
 }
 .app{max-width:430px;margin:0 auto;min-height:100vh;background:var(--bg);}
-
-/* HERO HEADER */
+ 
+/* HEADER */
 .header{background:linear-gradient(160deg,#1a1500 0%,#0d0d0d 70%);padding:env(safe-area-inset-top,20px) 20px 24px;border-bottom:1px solid rgba(201,168,76,0.15);position:relative;overflow:hidden;}
 .header::before{content:'✂️';position:absolute;right:-10px;top:50%;transform:translateY(-50%) rotate(-45deg);font-size:100px;opacity:.04;}
-.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
-.barber-av{width:56px;height:56px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:22px;color:var(--bg);border:2px solid rgba(201,168,76,0.3);}
+.header-top{display:flex;align-items:center;margin-bottom:16px;}
+.barber-av{width:56px;height:56px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:22px;color:var(--bg);border:2px solid rgba(201,168,76,0.3);flex-shrink:0;}
 .barber-info{flex:1;margin-left:14px;}
 .barber-name{font-family:var(--font-display);font-size:26px;letter-spacing:1.5px;color:var(--white);}
 .barber-loc{font-size:12px;color:var(--muted);font-weight:500;margin-top:1px;}
 .barber-ig{font-size:11px;color:var(--gold);font-weight:600;margin-top:3px;}
-.header-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.header-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
 .hchip{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.15);border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;color:var(--gold);}
-.hours-bar{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:11px 14px;margin-top:14px;display:flex;justify-content:space-between;align-items:center;}
+.hours-bar{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:11px 14px;display:flex;justify-content:space-between;align-items:center;}
 .hours-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
 .hours-val{font-size:12px;font-weight:600;color:var(--white);}
-
+ 
+/* NAV */
+.nav-tabs{display:flex;background:var(--s1);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.ntab{flex:1;padding:12px 8px;text-align:center;cursor:pointer;border-bottom:2px solid transparent;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.5px;transition:all .2s;white-space:nowrap;}
+.ntab.on{color:var(--gold);border-bottom-color:var(--gold);}
+ 
 /* PAGES */
-.pages{padding:16px 14px 90px;}
+.pages{padding:16px 14px 30px;}
 .page{display:none;}
 .page.on{display:block;animation:fadeUp .25s ease both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
-/* BOTTOM NAV */
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:var(--s1);border-top:1px solid var(--border);padding:10px 6px calc(env(safe-area-inset-bottom,8px) + 6px);display:flex;justify-content:space-around;z-index:100;}
-.bni{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;flex:1;}
-.bni-ic{font-size:20px;}
-.bni-lbl{font-size:9px;font-weight:700;letter-spacing:.3px;}
-.bni-lbl.on{color:var(--gold);}
-.bni-lbl.off{color:var(--muted);}
-
-/* SECTION */
-.sec{display:flex;align-items:center;justify-content:space-between;margin:0 0 10px;padding:0 2px;}
-.sec-title{font-family:var(--font-display);font-size:13px;letter-spacing:1px;color:var(--muted);}
-
-/* CARDS */
-.card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;overflow:hidden;}
-
+ 
 /* SERVICE CARDS */
-.svc-card{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r2);padding:18px;margin-bottom:10px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
-.svc-card.selected{border-color:var(--gold);background:#1a1500;}
-.svc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);opacity:0;transition:opacity .2s;}
-.svc-card.selected::before{opacity:1;}
-.svc-card:active{opacity:.85;}
-.svc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
-.svc-name{font-family:var(--font-display);font-size:18px;letter-spacing:.5px;color:var(--white);}
-.svc-price{font-family:var(--font-display);font-size:22px;letter-spacing:.5px;color:var(--gold);}
-.svc-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px;}
-.svc-meta{display:flex;gap:8px;}
+.svc-card{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r2);padding:18px;margin-bottom:12px;position:relative;overflow:hidden;transition:border-color .2s;}
+.svc-card:hover{border-color:rgba(201,168,76,0.3);}
+.svc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;}
+.svc-left{}
+.svc-ic{font-size:28px;margin-bottom:8px;}
+.svc-name{font-family:var(--font-display);font-size:20px;letter-spacing:.8px;color:var(--white);}
+.svc-desc{font-size:12px;color:var(--muted);line-height:1.55;margin:6px 0 10px;max-width:220px;}
+.svc-right{text-align:right;flex-shrink:0;}
+.svc-price{font-family:var(--font-display);font-size:28px;letter-spacing:.5px;color:var(--gold);}
+.svc-dur{font-size:11px;color:var(--muted);font-weight:600;margin-top:3px;}
+.svc-meta{display:flex;gap:8px;flex-wrap:wrap;}
 .svc-tag{background:var(--s3);border-radius:100px;padding:3px 10px;font-size:10px;font-weight:700;color:var(--muted);}
-.svc-tag.gold{background:rgba(201,168,76,0.1);color:var(--gold);}
-.svc-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;}
-.svc-card.selected .svc-check{background:var(--gold);border-color:var(--gold);}
-.svc-checkmark{color:var(--bg);font-size:12px;font-weight:900;opacity:0;}
-.svc-card.selected .svc-checkmark{opacity:1;}
-
-/* TIME SLOTS */
-.date-scroll{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;margin-bottom:14px;}
-.date-scroll::-webkit-scrollbar{display:none;}
-.date-btn{flex:0 0 auto;background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r);padding:10px 14px;text-align:center;cursor:pointer;transition:all .2s;min-width:58px;}
-.date-btn.on{background:#1a1500;border-color:var(--gold);}
-.date-btn:active{opacity:.85;}
-.date-day{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
-.date-num{font-family:var(--font-display);font-size:20px;color:var(--white);margin-top:2px;letter-spacing:.5px;}
-.date-btn.on .date-day{color:var(--gold);}
-.date-btn.on .date-num{color:var(--gold);}
-.slots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
-.slot{background:var(--s2);border:1.5px solid var(--border);border-radius:var(--r);padding:10px 6px;text-align:center;cursor:pointer;transition:all .2s;font-size:13px;font-weight:600;color:var(--white);}
-.slot.on{background:#1a1500;border-color:var(--gold);color:var(--gold);}
-.slot.taken{background:var(--s3);color:var(--s4);cursor:default;border-color:transparent;}
-.slot:active:not(.taken){opacity:.85;}
-
-/* FORM */
-.flbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;font-weight:700;}
-.fin{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--r);font-size:14px;color:var(--white);background:var(--s2);outline:none;font-family:'DM Sans',sans-serif;font-weight:500;transition:border-color .2s;margin-bottom:12px;}
-.fin:focus{border-color:var(--gold);}
-.fin::placeholder{color:var(--muted);}
-.fsel{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--r);font-size:14px;color:var(--white);background:var(--s2);outline:none;font-family:'DM Sans',sans-serif;font-weight:500;margin-bottom:12px;}
-.fsel option{background:var(--s2);}
-.fsub{width:100%;padding:15px;background:var(--gold);border:none;border-radius:var(--r2);color:var(--bg);font-size:16px;font-weight:800;cursor:pointer;font-family:var(--font-display);letter-spacing:1px;transition:opacity .2s;}
-.fsub:active{opacity:.85;}
-.fsub:disabled{opacity:.4;cursor:default;}
-
-/* BOOKING STEPS */
-.step-bar{display:flex;align-items:center;gap:0;margin-bottom:20px;}
-.step-item{flex:1;text-align:center;position:relative;}
-.step-item::after{content:'';position:absolute;top:12px;left:50%;width:100%;height:1px;background:var(--border);}
-.step-item:last-child::after{display:none;}
-.step-circle{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin:0 auto 4px;position:relative;z-index:1;}
-.step-circle.done{background:var(--gold);color:var(--bg);}
-.step-circle.active{background:var(--gold);color:var(--bg);box-shadow:0 0 0 3px rgba(201,168,76,0.2);}
-.step-circle.pending{background:var(--s3);color:var(--muted);}
-.step-lbl{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;}
-.step-lbl.active{color:var(--gold);}
-
-/* CONFIRM CARD */
-.confirm-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);}
-.confirm-row:last-of-type{border-bottom:none;}
-.confirm-key{font-size:13px;color:var(--muted);}
-.confirm-val{font-size:13px;font-weight:700;color:var(--white);}
-
-/* SUCCESS */
-.success-wrap{text-align:center;padding:32px 20px;}
-.success-ic{font-size:64px;margin-bottom:16px;}
-.success-title{font-family:var(--font-display);font-size:32px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;}
-.success-sub{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:24px;}
-.success-card{background:var(--s1);border:1px solid rgba(201,168,76,0.2);border-radius:var(--r2);padding:20px;margin-bottom:20px;text-align:left;}
-
-/* APPOINTMENTS LIST */
-.appt-row{display:flex;align-items:center;gap:12px;padding:13px 15px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;}
-.appt-row:last-child{border-bottom:none;}
-.appt-row:active{background:var(--s2);}
-.appt-ic{width:38px;height:38px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--bg);flex-shrink:0;}
-.appt-info{flex:1;min-width:0;}
-.appt-name{font-size:13px;font-weight:700;color:var(--white);}
-.appt-detail{font-size:11px;color:var(--muted);margin-top:2px;}
-.appt-status{font-size:10px;padding:3px 9px;border-radius:100px;font-weight:700;flex-shrink:0;}
-.s-up{background:rgba(201,168,76,0.1);color:var(--gold);}
-.s-done{background:var(--green-dim);color:var(--green);}
-.s-ns{background:var(--red-dim);color:var(--red);}
-
-/* TOAST */
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--bg);padding:10px 22px;border-radius:100px;font-size:13px;font-weight:700;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;z-index:300;}
-.toast.show{opacity:1;}
-
+.svc-tag.hot{background:rgba(201,168,76,0.12);color:var(--gold);border:1px solid rgba(201,168,76,0.2);}
+.book-btn{width:100%;padding:13px;background:var(--gold);border:none;border-radius:var(--r);color:var(--bg);font-size:14px;font-weight:800;cursor:pointer;font-family:var(--font-display);letter-spacing:1px;margin-top:14px;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;}
+.book-btn:hover{opacity:.85;}
+.book-btn:active{opacity:.7;}
+ 
 /* INFO PAGE */
-.info-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);padding:20px;margin-bottom:10px;}
-.info-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+.info-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;overflow:hidden;}
+.info-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--border);}
 .info-row:last-child{border-bottom:none;}
-.info-ic{width:36px;height:36px;border-radius:var(--r);background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.info-label{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.3px;}
+.info-ic{width:38px;height:38px;border-radius:var(--r);background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.info-label{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px;}
 .info-val{font-size:13px;font-weight:700;color:var(--white);margin-top:2px;}
-.call-btn{width:100%;padding:14px;background:var(--gold);border:none;border-radius:var(--r2);color:var(--bg);font-size:15px;font-weight:800;cursor:pointer;font-family:var(--font-display);letter-spacing:1px;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;margin-top:4px;}
-.ig-btn{width:100%;padding:13px;background:var(--s2);border:none;border-radius:var(--r2);color:var(--white);font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;margin-top:8px;}
-.add-home{background:var(--s2);border:1px solid rgba(201,168,76,0.2);border-radius:var(--r2);padding:16px;margin-bottom:10px;display:flex;gap:12px;align-items:center;}
+.action-btn{width:100%;padding:14px;border:none;border-radius:var(--r2);font-size:15px;font-weight:800;cursor:pointer;font-family:var(--font-display);letter-spacing:.8px;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;margin-bottom:8px;transition:opacity .2s;}
+.action-btn:hover{opacity:.85;}
+.action-btn.gold{background:var(--gold);color:var(--bg);}
+.action-btn.dark{background:var(--s2);color:var(--white);border:1px solid var(--border);}
+ 
+/* ADD HOME */
+.add-home{background:linear-gradient(135deg,#1a1500,#0f0f00);border:1px solid rgba(201,168,76,0.2);border-radius:var(--r2);padding:16px;margin-bottom:12px;display:flex;gap:12px;align-items:center;}
 .add-home-ic{font-size:28px;flex-shrink:0;}
 .add-home-title{font-family:var(--font-display);font-size:14px;letter-spacing:.5px;color:var(--gold);}
 .add-home-sub{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5;}
+ 
+/* NOTICE */
+.notice{background:var(--green-dim);border:1px solid rgba(0,200,117,0.2);border-radius:var(--r);padding:12px 14px;margin-bottom:12px;display:flex;gap:9px;align-items:flex-start;}
+.notice-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:4px;}
+.notice-txt{font-size:12px;color:#88ffcc;line-height:1.55;font-weight:500;}
+ 
+/* DIVIDER */
+.divider{display:flex;align-items:center;gap:12px;margin:16px 0;}
+.divider-line{flex:1;height:1px;background:var(--border);}
+.divider-txt{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
 </style>
 </head>
 <body>
 <div class="app">
-
+ 
+  <!-- HEADER -->
   <div class="header">
     <div class="header-top">
       <div class="barber-av">B</div>
       <div class="barber-info">
-        <div class="barber-name">BRYAN</div>
+        <div class="barber-name">BRYAN LAZO</div>
         <div class="barber-loc">📍 Dallas, TX · (214) 467-9903</div>
         <div class="barber-ig">@yaboabyren</div>
       </div>
@@ -178,7 +115,7 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
     <div class="header-chips">
       <div class="hchip">✂️ Walk-ins Welcome</div>
       <div class="hchip">⭐ Appointments Preferred</div>
-      <div class="hchip">💈 3 Services</div>
+      <div class="hchip">💈 Dallas, TX</div>
     </div>
     <div class="hours-bar">
       <div><div class="hours-label">Weekdays</div><div class="hours-val">11:00 AM – 7:00 PM</div></div>
@@ -186,170 +123,108 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
       <div><div class="hours-label">Weekends</div><div class="hours-val">10:00 AM – 8:00 PM</div></div>
     </div>
   </div>
-
+ 
+  <!-- NAV -->
+  <div class="nav-tabs">
+    <div class="ntab on" id="nt0" onclick="goPage(0)">✂️ BOOK</div>
+    <div class="ntab" id="nt1" onclick="goPage(1)">ℹ️ INFO</div>
+  </div>
+ 
   <div class="pages">
-
+ 
     <!-- BOOK PAGE -->
     <div class="page on" id="page0">
-
-      <!-- STEP 1 — PICK SERVICE -->
-      <div id="step1">
-        <div class="step-bar">
-          <div class="step-item"><div class="step-circle active">1</div><div class="step-lbl active">Service</div></div>
-          <div class="step-item"><div class="step-circle pending">2</div><div class="step-lbl">Time</div></div>
-          <div class="step-item"><div class="step-circle pending">3</div><div class="step-lbl">Your Info</div></div>
-          <div class="step-item"><div class="step-circle pending">4</div><div class="step-lbl">Confirm</div></div>
-        </div>
-        <div class="sec"><div class="sec-title">PICK YOUR SERVICE</div></div>
-        <div class="svc-card" id="svc0" onclick="selectService(0)">
-          <div class="svc-top">
-            <div>
-              <div class="svc-name">REGULAR HAIRCUT</div>
-              <div class="svc-desc">Clean cut, shaped up and finished to perfection.</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
-              <div class="svc-price">$30</div>
-              <div class="svc-check"><span class="svc-checkmark">✓</span></div>
-            </div>
-          </div>
-          <div class="svc-meta">
-            <span class="svc-tag">✂️ 45 min – 1 hr</span>
-            <span class="svc-tag gold">$30</span>
-          </div>
-        </div>
-        <div class="svc-card" id="svc1" onclick="selectService(1)">
-          <div class="svc-top">
-            <div>
-              <div class="svc-name">HAIRCUT + BEARD TRIM</div>
-              <div class="svc-desc">Full haircut with a clean beard trim. Looking sharp all around.</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
-              <div class="svc-price">$35</div>
-              <div class="svc-check"><span class="svc-checkmark">✓</span></div>
-            </div>
-          </div>
-          <div class="svc-meta">
-            <span class="svc-tag">✂️ 1 hr – 1 hr 10 min</span>
-            <span class="svc-tag gold">$35</span>
-          </div>
-        </div>
-        <div class="svc-card" id="svc2" onclick="selectService(2)">
-          <div class="svc-top">
-            <div>
-              <div class="svc-name">GLOW UP CUT ✨</div>
-              <div class="svc-desc">The full package — haircut, beard trim, AND eyebrows. Walk out a different person.</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
-              <div class="svc-price">$40</div>
-              <div class="svc-check"><span class="svc-checkmark">✓</span></div>
-            </div>
-          </div>
-          <div class="svc-meta">
-            <span class="svc-tag">✂️ 1 hr 20 min</span>
-            <span class="svc-tag gold">$40</span>
-            <span class="svc-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">Most Popular</span>
-          </div>
-        </div>
-        <button class="fsub" id="step1-btn" onclick="goStep(2)" disabled>Next — Pick a Time →</button>
+      <div class="notice">
+        <div class="notice-dot"></div>
+        <div class="notice-txt">Pick your service below and tap Book — you'll pick your date and time on the next screen. You'll get a reminder text before your appointment.</div>
       </div>
-
-      <!-- STEP 2 — PICK TIME -->
-      <div id="step2" style="display:none;">
-        <div class="step-bar">
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Service</div></div>
-          <div class="step-item"><div class="step-circle active">2</div><div class="step-lbl active">Time</div></div>
-          <div class="step-item"><div class="step-circle pending">3</div><div class="step-lbl">Your Info</div></div>
-          <div class="step-item"><div class="step-circle pending">4</div><div class="step-lbl">Confirm</div></div>
-        </div>
-        <div class="sec"><div class="sec-title">PICK A DATE</div></div>
-        <div class="date-scroll" id="date-scroll"></div>
-        <div class="sec"><div class="sec-title">PICK A TIME</div></div>
-        <div class="slots-grid" id="slots-grid"></div>
-        <button class="fsub" id="step2-btn" onclick="goStep(3)" disabled>Next — Your Info →</button>
-        <button style="width:100%;padding:13px;background:transparent;border:none;color:var(--muted);font-size:13px;margin-top:8px;cursor:pointer;" onclick="goStep(1)">← Back</button>
-      </div>
-
-      <!-- STEP 3 — YOUR INFO -->
-      <div id="step3" style="display:none;">
-        <div class="step-bar">
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Service</div></div>
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Time</div></div>
-          <div class="step-item"><div class="step-circle active">3</div><div class="step-lbl active">Your Info</div></div>
-          <div class="step-item"><div class="step-circle pending">4</div><div class="step-lbl">Confirm</div></div>
-        </div>
-        <div class="sec"><div class="sec-title">YOUR DETAILS</div></div>
-        <div class="card" style="padding:16px;">
-          <div class="flbl">Full Name</div>
-          <input class="fin" id="c-name" placeholder="Your full name" oninput="checkStep3()">
-          <div class="flbl">Phone Number</div>
-          <input class="fin" id="c-phone" type="tel" placeholder="(214) 000-0000" oninput="checkStep3()">
-          <div class="flbl">Notes for Bryan (optional)</div>
-          <input class="fin" id="c-notes" placeholder="e.g. taper fade, skin fade, shape up...">
-          <div style="font-size:11px;color:var(--muted);margin-top:-8px;line-height:1.55;">📱 You'll get a confirmation text + reminder 24hrs before your appointment.</div>
-        </div>
-        <button class="fsub" id="step3-btn" onclick="goStep(4)" disabled>Review Booking →</button>
-        <button style="width:100%;padding:13px;background:transparent;border:none;color:var(--muted);font-size:13px;margin-top:8px;cursor:pointer;" onclick="goStep(2)">← Back</button>
-      </div>
-
-      <!-- STEP 4 — CONFIRM -->
-      <div id="step4" style="display:none;">
-        <div class="step-bar">
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Service</div></div>
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Time</div></div>
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Your Info</div></div>
-          <div class="step-item"><div class="step-circle active">4</div><div class="step-lbl active">Confirm</div></div>
-        </div>
-        <div class="sec"><div class="sec-title">REVIEW YOUR BOOKING</div></div>
-        <div class="card" style="padding:18px;">
-          <div class="confirm-row"><span class="confirm-key">Barber</span><span class="confirm-val">Bryan ✂️</span></div>
-          <div class="confirm-row"><span class="confirm-key">Service</span><span class="confirm-val" id="conf-svc">—</span></div>
-          <div class="confirm-row"><span class="confirm-key">Price</span><span class="confirm-val" id="conf-price" style="color:var(--gold);">—</span></div>
-          <div class="confirm-row"><span class="confirm-key">Date</span><span class="confirm-val" id="conf-date">—</span></div>
-          <div class="confirm-row"><span class="confirm-key">Time</span><span class="confirm-val" id="conf-time">—</span></div>
-          <div class="confirm-row"><span class="confirm-key">Duration</span><span class="confirm-val" id="conf-dur">—</span></div>
-          <div class="confirm-row"><span class="confirm-key">Name</span><span class="confirm-val" id="conf-name">—</span></div>
-          <div class="confirm-row"><span class="confirm-key">Phone</span><span class="confirm-val" id="conf-phone">—</span></div>
-        </div>
-        <button class="fsub" onclick="confirmBooking()">CONFIRM BOOKING →</button>
-        <button style="width:100%;padding:13px;background:transparent;border:none;color:var(--muted);font-size:13px;margin-top:8px;cursor:pointer;" onclick="goStep(3)">← Back</button>
-      </div>
-
-      <!-- SUCCESS -->
-      <div id="step5" style="display:none;">
-        <div class="success-wrap">
-          <div class="success-ic">💈</div>
-          <div class="success-title">YOU'RE BOOKED!</div>
-          <div class="success-sub">Your appointment with Bryan is confirmed. You'll get a reminder text 24 hours before. See you soon!</div>
-          <div class="success-card">
-            <div class="confirm-row"><span class="confirm-key">Service</span><span class="confirm-val" id="done-svc">—</span></div>
-            <div class="confirm-row"><span class="confirm-key">Date & Time</span><span class="confirm-val" id="done-dt">—</span></div>
-            <div class="confirm-row"><span class="confirm-key">Price</span><span class="confirm-val" style="color:var(--gold);" id="done-price">—</span></div>
+ 
+      <!-- SERVICE 1 -->
+      <div class="svc-card">
+        <div class="svc-top">
+          <div class="svc-left">
+            <div class="svc-ic">✂️</div>
+            <div class="svc-name">REGULAR HAIRCUT</div>
+            <div class="svc-desc">Clean cut, shaped up and finished to perfection. Looking fresh every time.</div>
           </div>
-          <a href="tel:2144679903" style="display:flex;align-items:center;justify-content:center;gap:8px;background:var(--s2);border:1px solid var(--border);border-radius:var(--r2);padding:13px;color:var(--white);font-size:13px;font-weight:700;text-decoration:none;margin-bottom:8px;">📞 Call Bryan — (214) 467-9903</a>
-          <button style="width:100%;padding:13px;background:transparent;border:1px solid rgba(201,168,76,0.2);border-radius:var(--r2);color:var(--gold);font-size:13px;font-weight:700;cursor:pointer;" onclick="resetBooking()">Book Another Appointment</button>
+          <div class="svc-right">
+            <div class="svc-price">$30</div>
+            <div class="svc-dur">45 min – 1 hr</div>
+          </div>
         </div>
+        <div class="svc-meta">
+          <span class="svc-tag">✂️ Haircut</span>
+          <span class="svc-tag">⏱ 45–60 min</span>
+        </div>
+        <a href="https://cal.com/bryan-lazo-edtsxw/regular-haircut" target="_blank" class="book-btn">BOOK NOW — $30 →</a>
       </div>
+ 
+      <!-- SERVICE 2 -->
+      <div class="svc-card">
+        <div class="svc-top">
+          <div class="svc-left">
+            <div class="svc-ic">🧔</div>
+            <div class="svc-name">HAIRCUT + BEARD TRIM</div>
+            <div class="svc-desc">Full haircut with a clean beard trim. Sharp all the way around.</div>
+          </div>
+          <div class="svc-right">
+            <div class="svc-price">$35</div>
+            <div class="svc-dur">1 hr – 1 hr 10 min</div>
+          </div>
+        </div>
+        <div class="svc-meta">
+          <span class="svc-tag">✂️ Haircut</span>
+          <span class="svc-tag">🧔 Beard</span>
+          <span class="svc-tag">⏱ 60–70 min</span>
+        </div>
+        <a href="https://cal.com/bryan-lazo-edtsxw/haircut-beard-trim" target="_blank" class="book-btn">BOOK NOW — $35 →</a>
+      </div>
+ 
+      <!-- SERVICE 3 -->
+      <div class="svc-card" style="border-color:rgba(201,168,76,0.25);background:linear-gradient(160deg,#1a1500,#111);">
+        <div class="svc-top">
+          <div class="svc-left">
+            <div class="svc-ic">✨</div>
+            <div class="svc-name">GLOW UP CUT</div>
+            <div class="svc-desc">The full package — haircut, beard trim, AND eyebrows. Walk out a completely different person.</div>
+          </div>
+          <div class="svc-right">
+            <div class="svc-price">$40</div>
+            <div class="svc-dur">1 hr 20 min</div>
+          </div>
+        </div>
+        <div class="svc-meta">
+          <span class="svc-tag">✂️ Haircut</span>
+          <span class="svc-tag">🧔 Beard</span>
+          <span class="svc-tag">👁 Eyebrows</span>
+          <span class="svc-tag hot">🔥 Most Popular</span>
+        </div>
+        <a href="https://cal.com/bryan-lazo-edtsxw/glow-up-cut" target="_blank" class="book-btn">BOOK NOW — $40 →</a>
+      </div>
+ 
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-txt">or reach out directly</div>
+        <div class="divider-line"></div>
+      </div>
+ 
+      <a href="tel:2144679903" class="action-btn gold">📞 Call Bryan — (214) 467-9903</a>
+      <a href="sms:2144679903" class="action-btn dark">💬 Send a Text</a>
     </div>
-
-    <!-- MY APPOINTMENTS -->
-    <div class="page" id="page1">
-      <div class="sec" style="margin-top:4px;"><div class="sec-title">MY APPOINTMENTS</div></div>
-      <div class="card"><div id="my-appts"></div></div>
-    </div>
-
+ 
     <!-- INFO PAGE -->
-    <div class="page" id="page2">
+    <div class="page" id="page1">
       <div class="add-home">
         <div class="add-home-ic">📱</div>
         <div>
-          <div class="add-home-title">ADD TO HOME SCREEN</div>
-          <div class="add-home-sub">Tap the share button in your browser → "Add to Home Screen" — opens like a real app every time.</div>
+          <div class="add-home-title">SAVE TO HOME SCREEN</div>
+          <div class="add-home-sub">Tap the share button → "Add to Home Screen" — opens like a real app anytime you need to book.</div>
         </div>
       </div>
       <div class="info-card">
         <div class="info-row">
           <div class="info-ic">✂️</div>
-          <div><div class="info-label">Barber</div><div class="info-val">Bryan</div></div>
+          <div><div class="info-label">Barber</div><div class="info-val">Bryan Lazo</div></div>
         </div>
         <div class="info-row">
           <div class="info-ic">📍</div>
@@ -375,181 +250,18 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
           <div class="info-ic">🚶</div>
           <div><div class="info-label">Walk-ins</div><div class="info-val">Welcome · Appointments Preferred</div></div>
         </div>
+        <div class="info-row">
+          <div class="info-ic">💳</div>
+          <div><div class="info-label">Payment</div><div class="info-val">Cash · Zelle · Venmo</div></div>
+        </div>
       </div>
-      <a href="tel:2144679903" class="call-btn">📞 Call Bryan Now</a>
-      <a href="https://instagram.com/yaboabyren" target="_blank" class="ig-btn">📸 Follow on Instagram</a>
+      <a href="https://cal.com/bryan-lazo-edtsxw" target="_blank" class="action-btn gold">📅 Book an Appointment →</a>
+      <a href="tel:2144679903" class="action-btn dark">📞 Call — (214) 467-9903</a>
+      <a href="https://instagram.com/yaboabyren" target="_blank" class="action-btn dark">📸 Follow @yaboabyren</a>
     </div>
-
-  </div>
-
-  <!-- BOTTOM NAV -->
-  <div class="bottom-nav">
-    <div class="bni" onclick="goPage(0)">
-      <div class="bni-ic">✂️</div>
-      <div class="bni-lbl" id="nl0">Book</div>
-    </div>
-    <div class="bni" onclick="goPage(1)">
-      <div class="bni-ic">📅</div>
-      <div class="bni-lbl" id="nl1">My Appts</div>
-    </div>
-    <div class="bni" onclick="goPage(2)">
-      <div class="bni-ic">ℹ️</div>
-      <div class="bni-lbl" id="nl2">Info</div>
-    </div>
+ 
   </div>
 </div>
-
-<div class="toast" id="toast"></div>
-
-<script>
-var services=[
-  {name:'Regular Haircut',price:30,dur:'45 min – 1 hr'},
-  {name:'Haircut + Beard Trim',price:35,dur:'1 hr – 1 hr 10 min'},
-  {name:'Glow Up Cut',price:40,dur:'1 hr 20 min'},
-];
-var selectedSvc=null;
-var selectedDate=null;
-var selectedTime=null;
-var myAppts=[];
-
-// TAKEN SLOTS simulation
-var takenSlots={'0':['11:00 AM','12:00 PM','2:30 PM'],'1':['10:00 AM','11:30 AM','3:00 PM']};
-
-function toast(m){var el=document.getElementById('toast');el.textContent=m;el.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(function(){el.classList.remove('show');},2200);}
-
-function selectService(i){
-  selectedSvc=i;
-  document.querySelectorAll('.svc-card').forEach(function(c,j){c.classList.toggle('selected',j===i);});
-  document.getElementById('step1-btn').disabled=false;
-}
-
-function generateDates(){
-  var el=document.getElementById('date-scroll');
-  var days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var html='';
-  var today=new Date();
-  for(var i=0;i<14;i++){
-    var d=new Date(today);d.setDate(today.getDate()+i);
-    var isOn=selectedDate===i;
-    html+='<div class="date-btn'+(isOn?' on':'')+'" onclick="selectDate('+i+')">'
-      +'<div class="date-day">'+days[d.getDay()]+'</div>'
-      +'<div class="date-num">'+d.getDate()+'</div>'
-      +'</div>';
-  }
-  el.innerHTML=html;
-}
-
-function selectDate(i){
-  selectedDate=i;selectedTime=null;
-  document.getElementById('step2-btn').disabled=true;
-  generateDates();generateSlots();
-}
-
-function generateSlots(){
-  var el=document.getElementById('slots-grid');
-  var allSlots=['10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM','5:00 PM','5:30 PM','6:00 PM','6:30 PM'];
-  var taken=takenSlots[selectedDate]||[];
-  el.innerHTML=allSlots.map(function(s){
-    var isTaken=taken.indexOf(s)>=0;
-    var isOn=selectedTime===s;
-    return'<div class="slot'+(isTaken?' taken':isOn?' on':'')+'" onclick="'+(isTaken?'':('selectSlot(\''+s+'\')'))+'">'+s+'</div>';
-  }).join('');
-}
-
-function selectSlot(s){
-  selectedTime=s;
-  document.getElementById('step2-btn').disabled=false;
-  generateSlots();
-}
-
-function checkStep3(){
-  var nm=document.getElementById('c-name').value.trim();
-  var ph=document.getElementById('c-phone').value.trim();
-  document.getElementById('step3-btn').disabled=!(nm&&ph);
-}
-
-function goStep(n){
-  document.getElementById('step1').style.display=n===1?'block':'none';
-  document.getElementById('step2').style.display=n===2?'block':'none';
-  document.getElementById('step3').style.display=n===3?'block':'none';
-  document.getElementById('step4').style.display=n===4?'block':'none';
-  document.getElementById('step5').style.display=n===5?'block':'none';
-  if(n===2){generateDates();if(selectedDate!==null)generateSlots();}
-  if(n===4){
-    var svc=services[selectedSvc];
-    var d=new Date();d.setDate(d.getDate()+selectedDate);
-    var dateStr=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
-    document.getElementById('conf-svc').textContent=svc.name;
-    document.getElementById('conf-price').textContent='$'+svc.price;
-    document.getElementById('conf-date').textContent=dateStr;
-    document.getElementById('conf-time').textContent=selectedTime;
-    document.getElementById('conf-dur').textContent=svc.dur;
-    document.getElementById('conf-name').textContent=document.getElementById('c-name').value;
-    document.getElementById('conf-phone').textContent=document.getElementById('c-phone').value;
-  }
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function confirmBooking(){
-  var svc=services[selectedSvc];
-  var d=new Date();d.setDate(d.getDate()+selectedDate);
-  var dateStr=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
-  var appt={svc:svc.name,price:svc.price,date:dateStr,time:selectedTime,name:document.getElementById('c-name').value,phone:document.getElementById('c-phone').value,notes:document.getElementById('c-notes').value};
-  myAppts.unshift(appt);
-  document.getElementById('done-svc').textContent=svc.name;
-  document.getElementById('done-dt').textContent=dateStr+' at '+selectedTime;
-  document.getElementById('done-price').textContent='$'+svc.price;
-  // Send to Formspree
-  fetch('https://formspree.io/f/YOUR_FORMSPREE_ID',{
-    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      _subject:'💈 NEW BOOKING — Bryan: '+appt.name,
-      name:appt.name,phone:appt.phone,service:appt.svc,
-      date:appt.date,time:appt.time,price:'$'+appt.price,notes:appt.notes||'None',
-      message:'NEW BOOKING!\nName: '+appt.name+'\nPhone: '+appt.phone+'\nService: '+appt.svc+'\nDate: '+appt.date+'\nTime: '+appt.time+'\nPrice: $'+appt.price+'\nNotes: '+(appt.notes||'None')
-    })
-  }).catch(function(){});
-  goStep(5);
-}
-
-function resetBooking(){
-  selectedSvc=null;selectedDate=null;selectedTime=null;
-  document.querySelectorAll('.svc-card').forEach(function(c){c.classList.remove('selected');});
-  document.getElementById('step1-btn').disabled=true;
-  document.getElementById('c-name').value='';
-  document.getElementById('c-phone').value='';
-  document.getElementById('c-notes').value='';
-  goStep(1);
-}
-
-function renderMyAppts(){
-  var el=document.getElementById('my-appts');
-  if(!myAppts.length){el.innerHTML='<div style="padding:28px;text-align:center;color:var(--muted);font-size:13px;">No appointments yet.<br>Book your first cut! ✂️</div>';return;}
-  el.innerHTML=myAppts.map(function(a){
-    return'<div class="appt-row">'
-      +'<div class="appt-ic">'+a.name.split(' ').map(function(w){return w[0];}).join('').slice(0,2)+'</div>'
-      +'<div class="appt-info"><div class="appt-name">'+a.svc+'</div><div class="appt-detail">'+a.date+' at '+a.time+' · $'+a.price+'</div></div>'
-      +'<span class="appt-status s-up">Upcoming</span>'
-      +'</div>';
-  }).join('');
-}
-
-function goPage(n){
-  for(var i=0;i<3;i++){
-    var p=document.getElementById('page'+i);
-    var nl=document.getElementById('nl'+i);
-    if(p)p.classList.toggle('on',i===n);
-    if(nl)nl.className='bni-lbl '+(i===n?'on':'off');
-  }
-  if(n===1)renderMyAppts();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-// Init nav labels
-document.getElementById('nl0').className='bni-lbl on';
-document.getElementById('nl1').className='bni-lbl off';
-document.getElementById('nl2').className='bni-lbl off';
-</script>
 </body>
 </html>
+ 
