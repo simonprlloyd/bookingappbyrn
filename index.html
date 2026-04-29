@@ -24,7 +24,7 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
   --r:12px;--r2:18px;--r3:26px;
 }
 .app{max-width:430px;margin:0 auto;min-height:100vh;background:var(--bg);}
- 
+
 /* HEADER */
 .header{background:linear-gradient(160deg,#1a1500 0%,#0d0d0d 70%);padding:env(safe-area-inset-top,20px) 20px 24px;border-bottom:1px solid rgba(201,168,76,0.15);position:relative;overflow:hidden;}
 .header::before{content:'✂️';position:absolute;right:-10px;top:50%;transform:translateY(-50%) rotate(-45deg);font-size:100px;opacity:.04;}
@@ -39,19 +39,19 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
 .hours-bar{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:11px 14px;display:flex;justify-content:space-between;align-items:center;}
 .hours-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
 .hours-val{font-size:12px;font-weight:600;color:var(--white);}
- 
+
 /* NAV */
 .nav-tabs{display:flex;background:var(--s1);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
 .nav-tabs::-webkit-scrollbar{display:none;}
 .ntab{flex:1;padding:12px 8px;text-align:center;cursor:pointer;border-bottom:2px solid transparent;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.5px;transition:all .2s;white-space:nowrap;}
 .ntab.on{color:var(--gold);border-bottom-color:var(--gold);}
- 
+
 /* PAGES */
 .pages{padding:16px 14px 30px;}
 .page{display:none;}
 .page.on{display:block;animation:fadeUp .25s ease both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
- 
+
 /* SERVICE CARDS */
 .svc-card{background:var(--s1);border:1.5px solid var(--border);border-radius:var(--r2);padding:18px;margin-bottom:12px;position:relative;overflow:hidden;transition:border-color .2s;}
 .svc-card:hover{border-color:rgba(201,168,76,0.3);}
@@ -69,7 +69,7 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
 .book-btn{width:100%;padding:13px;background:var(--gold);border:none;border-radius:var(--r);color:var(--bg);font-size:14px;font-weight:800;cursor:pointer;font-family:var(--font-display);letter-spacing:1px;margin-top:14px;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;}
 .book-btn:hover{opacity:.85;}
 .book-btn:active{opacity:.7;}
- 
+
 /* INFO PAGE */
 .info-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;overflow:hidden;}
 .info-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--border);}
@@ -81,18 +81,18 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
 .action-btn:hover{opacity:.85;}
 .action-btn.gold{background:var(--gold);color:var(--bg);}
 .action-btn.dark{background:var(--s2);color:var(--white);border:1px solid var(--border);}
- 
+
 /* ADD HOME */
 .add-home{background:linear-gradient(135deg,#1a1500,#0f0f00);border:1px solid rgba(201,168,76,0.2);border-radius:var(--r2);padding:16px;margin-bottom:12px;display:flex;gap:12px;align-items:center;}
 .add-home-ic{font-size:28px;flex-shrink:0;}
 .add-home-title{font-family:var(--font-display);font-size:14px;letter-spacing:.5px;color:var(--gold);}
 .add-home-sub{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5;}
- 
+
 /* NOTICE */
 .notice{background:var(--green-dim);border:1px solid rgba(0,200,117,0.2);border-radius:var(--r);padding:12px 14px;margin-bottom:12px;display:flex;gap:9px;align-items:flex-start;}
 .notice-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:4px;}
 .notice-txt{font-size:12px;color:#88ffcc;line-height:1.55;font-weight:500;}
- 
+
 /* DIVIDER */
 .divider{display:flex;align-items:center;gap:12px;margin:16px 0;}
 .divider-line{flex:1;height:1px;background:var(--border);}
@@ -101,7 +101,7 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
 </head>
 <body>
 <div class="app">
- 
+
   <!-- HEADER -->
   <div class="header">
     <div class="header-top">
@@ -123,22 +123,34 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
       <div><div class="hours-label">Weekends</div><div class="hours-val">10:00 AM – 8:00 PM</div></div>
     </div>
   </div>
- 
+
   <!-- NAV -->
   <div class="nav-tabs">
     <div class="ntab on" id="nt0" onclick="goPage(0)">✂️ BOOK</div>
     <div class="ntab" id="nt1" onclick="goPage(1)">ℹ️ INFO</div>
   </div>
- 
+
   <div class="pages">
- 
+
     <!-- BOOK PAGE -->
     <div class="page on" id="page0">
+      <!-- BOOKING CONFIRMED BANNER - shows when returning from Cal.com -->
+      <div id="conf-banner" style="display:none;background:linear-gradient(135deg,#1a1500,#0f0f00);border:1px solid rgba(201,168,76,0.3);border-radius:18px;padding:20px;margin-bottom:14px;text-align:center;">
+        <div style="font-size:40px;margin-bottom:10px;">💈</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;color:#c9a84c;margin-bottom:6px;">BOOKING CONFIRMED!</div>
+        <div style="font-size:13px;color:#777;line-height:1.6;margin-bottom:14px;">You're all set. Bryan will see you soon.<br>Check your email for confirmation details.</div>
+        <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:12px;margin-bottom:12px;">
+          <div style="font-size:11px;color:#777;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Questions?</div>
+          <a href="tel:2144679903" style="font-size:14px;font-weight:700;color:#c9a84c;text-decoration:none;">📞 (214) 467-9903</a>
+        </div>
+        <button onclick="document.getElementById('conf-banner').style.display='none'" style="width:100%;padding:11px;background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#777;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">Book Another Service</button>
+      </div>
+
       <div class="notice">
         <div class="notice-dot"></div>
         <div class="notice-txt">Pick your service below and tap Book — you'll pick your date and time on the next screen. You'll get a reminder text before your appointment.</div>
       </div>
- 
+
       <!-- SERVICE 1 -->
       <div class="svc-card">
         <div class="svc-top">
@@ -156,9 +168,9 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
           <span class="svc-tag">✂️ Haircut</span>
           <span class="svc-tag">⏱ 45–60 min</span>
         </div>
-        <a href="https://cal.com/bryan-lazo-edtsxw/regular-haircut" target="_blank" class="book-btn">BOOK NOW — $30 →</a>
+        <a href="https://calendly.com/10tic4lazo04/30min" class="book-btn">BOOK NOW — $30 →</a>
       </div>
- 
+
       <!-- SERVICE 2 -->
       <div class="svc-card">
         <div class="svc-top">
@@ -177,9 +189,9 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
           <span class="svc-tag">🧔 Beard</span>
           <span class="svc-tag">⏱ 60–70 min</span>
         </div>
-        <a href="https://cal.com/bryan-lazo-edtsxw/haircut-beard-trim" target="_blank" class="book-btn">BOOK NOW — $35 →</a>
+        <a href="https://calendly.com/10tic4lazo04/haircut-beard" class="book-btn">BOOK NOW — $35 →</a>
       </div>
- 
+
       <!-- SERVICE 3 -->
       <div class="svc-card" style="border-color:rgba(201,168,76,0.25);background:linear-gradient(160deg,#1a1500,#111);">
         <div class="svc-top">
@@ -199,19 +211,19 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
           <span class="svc-tag">👁 Eyebrows</span>
           <span class="svc-tag hot">🔥 Most Popular</span>
         </div>
-        <a href="https://cal.com/bryan-lazo-edtsxw/glow-up-cut" target="_blank" class="book-btn">BOOK NOW — $40 →</a>
+        <a href="https://calendly.com/10tic4lazo04/glow-up-cut" class="book-btn">BOOK NOW — $40 →</a>
       </div>
- 
+
       <div class="divider">
         <div class="divider-line"></div>
         <div class="divider-txt">or reach out directly</div>
         <div class="divider-line"></div>
       </div>
- 
+
       <a href="tel:2144679903" class="action-btn gold">📞 Call Bryan — (214) 467-9903</a>
       <a href="sms:2144679903" class="action-btn dark">💬 Send a Text</a>
     </div>
- 
+
     <!-- INFO PAGE -->
     <div class="page" id="page1">
       <div class="add-home">
@@ -255,13 +267,23 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
           <div><div class="info-label">Payment</div><div class="info-val">Cash · Zelle · Venmo</div></div>
         </div>
       </div>
-      <a href="https://cal.com/bryan-lazo-edtsxw" target="_blank" class="action-btn gold">📅 Book an Appointment →</a>
+      <a href="https://calendly.com/10tic4lazo04" target="_blank" class="action-btn gold">📅 Book an Appointment →</a>
       <a href="tel:2144679903" class="action-btn dark">📞 Call — (214) 467-9903</a>
       <a href="https://instagram.com/yaboabyren" target="_blank" class="action-btn dark">📸 Follow @yaboabyren</a>
     </div>
- 
+
   </div>
 </div>
+<script>
+// Check if returning from Cal.com booking
+(function(){
+  var ref = document.referrer;
+  var params = new URLSearchParams(window.location.search);
+  if(ref.includes('cal.com') || params.get('booked') === 'true'){
+    document.getElementById('conf-banner').style.display = 'block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+})();
+</script>
 </body>
 </html>
- 
