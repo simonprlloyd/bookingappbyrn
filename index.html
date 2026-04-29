@@ -275,7 +275,17 @@ html,body{min-height:100%;background:#0a0a0a;font-family:'DM Sans',sans-serif;}
   </div>
 </div>
 <script>
-// Check if returning from Cal.com booking
+function goPage(n){
+  for(var i=0;i<2;i++){
+    var p=document.getElementById('page'+i);
+    var nt=document.getElementById('nt'+i);
+    if(p)p.classList.toggle('on',i===n);
+    if(nt)nt.classList.toggle('on',i===n);
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// Check if returning from Calendly booking
 (function(){
   var ref = document.referrer;
   var params = new URLSearchParams(window.location.search);
