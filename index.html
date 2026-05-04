@@ -494,6 +494,45 @@ function goStep(n){
 var SUPA_URL='https://bqualjiqrxvwahrxebnn.supabase.co';
 var SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxdWFsamlxcnh2d2FocnhlYm5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2NDUyMzMsImV4cCI6MjA5MzIyMTIzM30.JEhqVvyMAoInuhJpebFQNhjIXIYHD2n0GYj1XhkLV-8';
 
+// ── Auto-create client when they book ──
+async function upsertClient(name, phone){
+  try{
+    // Check if client already exists by phone
+    var check = await fetch(SUPA_URL+'/rest/v1/clients?phone=eq.'+encodeURIComponent(phone)+'&select=id,total_visits,client_name', {
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
+    });
+    var existing = await check.json();
+
+    if(existing && existing.length > 0){
+      // Client exists — they're returning, just update status
+      var cl = existing[0];
+      await fetch(SUPA_URL+'/rest/v1/clients?id=eq.'+cl.id, {
+        method:'PATCH',
+        headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json'},
+        body: JSON.stringify({ status: 'active' })
+      });
+      console.log('Existing client found:', cl.client_name);
+    } else {
+      // New client — create their record
+      await fetch(SUPA_URL+'/rest/v1/clients', {
+        method:'POST',
+        headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':'return=representation'},
+        body: JSON.stringify({
+          client_name: name,
+          phone: phone,
+          status: 'new',
+          total_visits: 0,
+          total_spent: 0,
+          notes: ''
+        })
+      });
+      console.log('New client created:', name);
+    }
+  } catch(e){
+    console.log('Client upsert error:', e);
+  }
+}
+
 async function confirmBooking(){
   var nameVal=document.getElementById('c-name').value.trim();
   var phoneVal=document.getElementById('c-phone').value.trim();
@@ -540,13 +579,14 @@ async function confirmBooking(){
     var data=await res.json();
     
     if(res.ok){
+      // ── Auto-create or update client record ──
+      await upsertClient(nameVal, phoneVal);
       myAppts.unshift(appt);
       document.getElementById('done-svc').textContent=svc.name;
       document.getElementById('done-dt').textContent=dateStr+' at '+selectedTime;
       document.getElementById('done-price').textContent='$'+svc.price;
       goStep(5);
     } else {
-      // Table might not exist yet — still show success and save locally
       console.log('Supabase error:',data);
       myAppts.unshift(appt);
       document.getElementById('done-svc').textContent=svc.name;
