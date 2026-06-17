@@ -26,8 +26,8 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
 .app{max-width:430px;margin:0 auto;min-height:100vh;background:var(--bg);}
 
 /* HERO HEADER */
-.header{background:linear-gradient(160deg,#262626 0%,#0d0d0d 70%);padding:calc(env(safe-area-inset-top, 0px) + 48px) 20px 24px;border-top:4px solid #c8a24a;border-bottom:1px solid rgba(192,192,192,0.15);position:relative;overflow:hidden;}
-@media(min-width:600px){.header{padding-top:calc(env(safe-area-inset-top, 0px) + 28px);}}
+.header{background:linear-gradient(160deg,#262626 0%,#0d0d0d 70%);padding:calc(env(safe-area-inset-top, 0px) + 18px) 20px 22px;border-top:4px solid #c8a24a;border-bottom:1px solid rgba(192,192,192,0.15);position:relative;overflow:hidden;}
+@media(min-width:600px){.header{padding-top:calc(env(safe-area-inset-top, 0px) + 16px);}}
 .header::before{content:'✂️';position:absolute;right:-10px;top:50%;transform:translateY(-50%) rotate(-45deg);font-size:100px;opacity:.04;}
 .header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
 .barber-av{width:56px;height:56px;border-radius:50%;background:#171717;display:flex;align-items:center;justify-content:center;overflow:hidden;border:2px solid rgba(192,192,192,0.35);flex-shrink:0;}
@@ -141,6 +141,8 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
 .step-circle.pending{background:var(--s3);color:var(--muted);}
 .step-lbl{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;}
 .step-lbl.active{color:var(--gold);}
+.pay-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:15px 16px;border-radius:var(--r2);font-size:15px;font-weight:700;text-decoration:none;margin-bottom:10px;font-family:'DM Sans',sans-serif;transition:opacity .2s;}
+.pay-btn:active{opacity:.85;}
 
 /* CONFIRM CARD */
 .confirm-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);}
@@ -228,14 +230,25 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
 
       <!-- STEP 1 — PICK SERVICE -->
       <div id="step1">
-        <div class="step-bar">
-          <div class="step-item"><div class="step-circle active">1</div><div class="step-lbl active">Service</div></div>
-          <div class="step-item"><div class="step-circle pending">2</div><div class="step-lbl">Time</div></div>
-          <div class="step-item"><div class="step-circle pending">3</div><div class="step-lbl">Your Info</div></div>
-          <div class="step-item"><div class="step-circle pending">4</div><div class="step-lbl">Confirm</div></div>
-        </div>
+        <div class="step-bar" id="stepbar-s1"></div>
         <div class="sec"><div class="sec-title">PICK YOUR SERVICE</div></div>
         <div class="svc-card" id="svc0" onclick="selectService(0)">
+          <div class="svc-top">
+            <div>
+              <div class="svc-name">FADE &amp; BEARD</div>
+              <div class="svc-desc">Experience luxury grooming at its finest with my exclusive haircut and beard service. Experience the difference of quality grooming today.</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+              <div class="svc-check"><span class="svc-checkmark">✓</span></div>
+            </div>
+          </div>
+          <div class="svc-meta">
+            <span class="svc-tag">✂️ 1 hr – 1 hr 15 min</span>
+            <span class="svc-tag gold">+ Complimentary eyebrow cleanup</span>
+            <span class="svc-tag" style="background:rgba(192,192,192,0.15);color:var(--gold);">Most Popular</span>
+          </div>
+        </div>
+        <div class="svc-card" id="svc1" onclick="selectService(1)">
           <div class="svc-top">
             <div>
               <div class="svc-name">THE FRESH RESET</div>
@@ -250,7 +263,7 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
             <span class="svc-tag gold">+ Complimentary eyebrow cleanup</span>
           </div>
         </div>
-        <div class="svc-card" id="svc1" onclick="selectService(1)">
+        <div class="svc-card" id="svc2" onclick="selectService(2)">
           <div class="svc-top">
             <div>
               <div class="svc-name">FADE</div>
@@ -261,24 +274,8 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
             </div>
           </div>
           <div class="svc-meta">
-            <span class="svc-tag">✂️ 1 hr – 1 hr 10 min</span>
+            <span class="svc-tag">✂️ 1 hr</span>
             <span class="svc-tag gold">+ Complimentary eyebrow cleanup</span>
-          </div>
-        </div>
-        <div class="svc-card" id="svc2" onclick="selectService(2)">
-          <div class="svc-top">
-            <div>
-              <div class="svc-name">FADE &amp; BEARD</div>
-              <div class="svc-desc">Experience luxury grooming at its finest with my exclusive haircut and beard service. Experience the difference of quality grooming today.</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
-              <div class="svc-check"><span class="svc-checkmark">✓</span></div>
-            </div>
-          </div>
-          <div class="svc-meta">
-            <span class="svc-tag">✂️ 1 hr 20 min</span>
-            <span class="svc-tag gold">+ Complimentary eyebrow cleanup</span>
-            <span class="svc-tag" style="background:rgba(192,192,192,0.15);color:var(--gold);">Most Popular</span>
           </div>
         </div>
         <button class="fsub" id="step1-btn" onclick="goStep(2)" disabled>Next — Pick a Time →</button>
@@ -286,14 +283,13 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
 
       <!-- STEP 2 — PICK TIME -->
       <div id="step2" style="display:none;">
-        <div class="step-bar">
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Service</div></div>
-          <div class="step-item"><div class="step-circle active">2</div><div class="step-lbl active">Time</div></div>
-          <div class="step-item"><div class="step-circle pending">3</div><div class="step-lbl">Your Info</div></div>
-          <div class="step-item"><div class="step-circle pending">4</div><div class="step-lbl">Confirm</div></div>
-        </div>
+        <div class="step-bar" id="stepbar-s2"></div>
         <div class="sec"><div class="sec-title">PICK A DATE</div></div>
         <div class="date-scroll" id="date-scroll"></div>
+        <div style="background:var(--s2);border:1px solid rgba(192,192,192,0.18);border-radius:var(--r);padding:11px 13px;margin-bottom:14px;display:flex;align-items:center;gap:10px;">
+          <div style="font-size:18px;line-height:1;">📞</div>
+          <div style="font-size:12px;color:var(--white);line-height:1.5;">Need a cut <b>today</b>? Online booking starts tomorrow — for same-day, <a href="tel:2144679903" style="color:var(--gold);font-weight:700;text-decoration:none;">call or text Bryan directly at (214) 467-9903</a>.</div>
+        </div>
         <div class="sec"><div class="sec-title">PICK A TIME</div></div>
         <div class="slots-grid" id="slots-grid"></div>
         <button class="fsub" id="step2-btn" onclick="goStep(3)" disabled>Next — Your Info →</button>
@@ -302,12 +298,7 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
 
       <!-- STEP 3 — YOUR INFO -->
       <div id="step3" style="display:none;">
-        <div class="step-bar">
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Service</div></div>
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Time</div></div>
-          <div class="step-item"><div class="step-circle active">3</div><div class="step-lbl active">Your Info</div></div>
-          <div class="step-item"><div class="step-circle pending">4</div><div class="step-lbl">Confirm</div></div>
-        </div>
+        <div class="step-bar" id="stepbar-s3"></div>
         <div class="sec"><div class="sec-title">YOUR DETAILS</div></div>
         <div class="card" style="padding:16px;">
           <div class="flbl">Full Name</div>
@@ -318,18 +309,40 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
           <input class="fin" id="c-notes" placeholder="e.g. taper fade, skin fade, shape up...">
           <div style="font-size:11px;color:var(--muted);margin-top:-8px;line-height:1.55;">📅 You'll get a confirmation + a reminder 24 hrs before your appointment.</div>
         </div>
-        <button class="fsub" id="step3-btn" onclick="goStep(4)" disabled>Review Booking →</button>
+        <button class="fsub" id="step3-btn" onclick="goStep('pay')" disabled>Next — Hold My Slot →</button>
         <button style="width:100%;padding:13px;background:transparent;border:none;color:var(--muted);font-size:13px;margin-top:8px;cursor:pointer;" onclick="goStep(2)">← Back</button>
+      </div>
+
+      <!-- STEP PAY — DEPOSIT TO HOLD -->
+      <div id="stepPay" style="display:none;">
+        <div class="step-bar" id="stepbar-pay"></div>
+        <div class="sec"><div class="sec-title">HOLD YOUR SLOT</div></div>
+        <div class="card" style="padding:18px;">
+          <div style="font-size:14px;color:var(--white);font-weight:700;margin-bottom:6px;">Send a $10 deposit to lock in your time ✂️</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:4px;">Your deposit goes toward your cut — it just holds the chair so the slot stays yours. Tap a method below, send <b style="color:var(--gold);">$10</b>, and put your <b style="color:var(--gold);">name + appointment time</b> in the note.</div>
+        </div>
+
+        <a href="https://cash.app/$YABOABYREN/10" target="_blank" rel="noopener" onclick="markPaid('Cash App')" class="pay-btn" style="background:#00d54b;color:#04210f;">
+          <span style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">💵</span> Pay with Cash App</span><span style="font-weight:800;">$10 →</span>
+        </a>
+        <a href="venmo://paycharge?txn=pay&recipients=YaBoaByren&amount=10&note=Urban%20Cutz%20deposit" target="_blank" rel="noopener" onclick="markPaid('Venmo')" class="pay-btn" style="background:#008cff;color:#fff;">
+          <span style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🅥</span> Pay with Venmo</span><span style="font-weight:800;">$10 →</span>
+        </a>
+        <a href="#" onclick="showZelle();return false;" class="pay-btn" style="background:#6d1ed4;color:#fff;">
+          <span style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🏦</span> Pay with Zelle</span><span style="font-weight:800;">$10 →</span>
+        </a>
+        <div id="zelle-info" style="display:none;background:var(--s2);border:1px solid rgba(192,192,192,0.18);border-radius:var(--r);padding:13px;margin-bottom:10px;font-size:12px;color:var(--white);line-height:1.6;">
+          Send your Zelle deposit to <b style="color:var(--gold);">(214) 467-9903</b> (Bryan · Urban Cutz). Add your name + appointment time in the memo.
+        </div>
+
+        <button class="fsub" onclick="goStep(4)" style="margin-top:4px;">I've Sent It — Review Booking →</button>
+        <button style="width:100%;padding:13px;background:transparent;border:none;color:var(--muted);font-size:13px;margin-top:8px;cursor:pointer;" onclick="goStep(4)">I'll pay at the shop — skip for now</button>
+        <button style="width:100%;padding:8px;background:transparent;border:none;color:var(--muted);font-size:13px;margin-top:2px;cursor:pointer;" onclick="goStep(3)">← Back</button>
       </div>
 
       <!-- STEP 4 — CONFIRM -->
       <div id="step4" style="display:none;">
-        <div class="step-bar">
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Service</div></div>
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Time</div></div>
-          <div class="step-item"><div class="step-circle done">✓</div><div class="step-lbl">Your Info</div></div>
-          <div class="step-item"><div class="step-circle active">4</div><div class="step-lbl active">Confirm</div></div>
-        </div>
+        <div class="step-bar" id="stepbar-s4"></div>
         <div class="sec"><div class="sec-title">REVIEW YOUR BOOKING</div></div>
         <div class="card" style="padding:18px;">
           <div class="confirm-row"><span class="confirm-key">Barber</span><span class="confirm-val">Bryan ✂️</span></div>
@@ -340,6 +353,7 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
           <div class="confirm-row"><span class="confirm-key">Duration</span><span class="confirm-val" id="conf-dur">—</span></div>
           <div class="confirm-row"><span class="confirm-key">Name</span><span class="confirm-val" id="conf-name">—</span></div>
           <div class="confirm-row"><span class="confirm-key">Phone</span><span class="confirm-val" id="conf-phone">—</span></div>
+          <div class="confirm-row"><span class="confirm-key">Deposit</span><span class="confirm-val" id="conf-deposit" style="color:var(--gold);">—</span></div>
         </div>
         <button class="fsub" onclick="confirmBooking()">CONFIRM BOOKING →</button>
         <button style="width:100%;padding:13px;background:transparent;border:none;color:var(--muted);font-size:13px;margin-top:8px;cursor:pointer;" onclick="goStep(3)">← Back</button>
@@ -451,9 +465,9 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
 // Prices are hidden from clients in the UI, but saved so Bryan's CRM
 // revenue + per-client spend stay accurate. Edit these numbers anytime.
 var services=[
+  {name:'Fade & Beard',price:40,dur:'1 hr – 1 hr 15 min'},
   {name:'The Fresh Reset',price:30,dur:'45 min – 1 hr'},
-  {name:'Fade',price:35,dur:'1 hr – 1 hr 10 min'},
-  {name:'Fade & Beard',price:40,dur:'1 hr 20 min'},
+  {name:'Fade',price:35,dur:'1 hr'},
 ];
 var selectedSvc=null;
 var selectedDate=null;
@@ -497,7 +511,8 @@ function generateDates(){
   var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var html='';
   var today=new Date();
-  for(var i=0;i<14;i++){
+  // No same-day booking — start from tomorrow (offset 1) through 14 days out
+  for(var i=1;i<=14;i++){
     var d=new Date(today);d.setDate(today.getDate()+i);
     var isOn=selectedDate===i;
     html+='<div class="date-btn'+(isOn?' on':'')+'" onclick="selectDate('+i+')">'
@@ -582,12 +597,39 @@ function checkStep3(){
   document.getElementById('step3-btn').disabled=!(nm&&ph);
 }
 
+// Step bar renderer — 5 segments: Service, Time, Info, Pay, Confirm.
+// activeIdx is 0-based position of the current step.
+function renderStepBars(activeIdx){
+  var labels=['Service','Time','Your Info','Pay','Confirm'];
+  function build(active){
+    var h='';
+    for(var i=0;i<labels.length;i++){
+      var cls=i<active?'done':i===active?'active':'pending';
+      var inner=i<active?'✓':(i+1);
+      h+='<div class="step-item"><div class="step-circle '+cls+'">'+inner+'</div>'
+        +'<div class="step-lbl'+(i===active?' active':'')+'">'+labels[i]+'</div></div>';
+    }
+    return h;
+  }
+  var bars={ 's1':0,'s2':1,'s3':2,'pay':3,'s4':4 };
+  for(var key in bars){
+    var el=document.getElementById('stepbar-'+key);
+    if(el)el.innerHTML=build(bars[key]);
+  }
+}
+
+function showZelle(){var z=document.getElementById('zelle-info');if(z)z.style.display='block';}
+var depositMethod=null;
+function markPaid(method){depositMethod=method;}
+
 function goStep(n){
   document.getElementById('step1').style.display=n===1?'block':'none';
   document.getElementById('step2').style.display=n===2?'block':'none';
   document.getElementById('step3').style.display=n===3?'block':'none';
+  document.getElementById('stepPay').style.display=n==='pay'?'block':'none';
   document.getElementById('step4').style.display=n===4?'block':'none';
   document.getElementById('step5').style.display=n===5?'block':'none';
+  renderStepBars(0); // ensure bars are populated
   if(n===2){generateDates();if(selectedDate!==null)generateSlots();}
   if(n===4){
     var svc=services[selectedSvc];
@@ -599,6 +641,8 @@ function goStep(n){
     document.getElementById('conf-dur').textContent=svc.dur;
     document.getElementById('conf-name').textContent=document.getElementById('c-name').value;
     document.getElementById('conf-phone').textContent=document.getElementById('c-phone').value;
+    var dep=document.getElementById('conf-deposit');
+    if(dep)dep.textContent=depositMethod?('Sent via '+depositMethod+' ✓'):'Pay at the shop';
   }
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -684,7 +728,7 @@ async function confirmBooking(){
         price:svc.price,
         appointment_date:isoDate,
         appointment_time:selectedTime,
-        notes:document.getElementById('c-notes').value||'',
+        notes:((document.getElementById('c-notes').value||'')+(depositMethod?' [Deposit sent via '+depositMethod+']':'')).trim(),
         status:'upcoming',
         barber:'Bryan'
       })
@@ -719,12 +763,13 @@ async function confirmBooking(){
 }
 
 function resetBooking(){
-  selectedSvc=null;selectedDate=null;selectedTime=null;
+  selectedSvc=null;selectedDate=null;selectedTime=null;depositMethod=null;
   document.querySelectorAll('.svc-card').forEach(function(c){c.classList.remove('selected');});
   document.getElementById('step1-btn').disabled=true;
   document.getElementById('c-name').value='';
   document.getElementById('c-phone').value='';
   document.getElementById('c-notes').value='';
+  var z=document.getElementById('zelle-info');if(z)z.style.display='none';
   goStep(1);
 }
 
@@ -845,6 +890,7 @@ function goPage(n){
 document.getElementById('nl0').className='bni-lbl on';
 document.getElementById('nl1').className='bni-lbl off';
 document.getElementById('nl2').className='bni-lbl off';
+renderStepBars(0);
 </script>
 </body>
 </html>
