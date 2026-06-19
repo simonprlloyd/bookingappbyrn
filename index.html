@@ -316,8 +316,18 @@ html,body{min-height:100%;background:#171717;font-family:'DM Sans',sans-serif;}
           </div>
         </div>
 
-        <button class="fsub" onclick="goStep(4)" style="margin-top:4px;">I've Sent It — Review Booking →</button>
-        <button style="width:100%;padding:8px;background:transparent;border:none;color:var(--muted);font-size:13px;margin-top:2px;cursor:pointer;" onclick="goStep(3)">← Back</button>
+        <button class="fsub" onclick="choosePay('zelle')" style="margin-top:4px;">I've Sent the Zelle — Review Booking →</button>
+
+        <div style="display:flex;align-items:center;gap:10px;margin:14px 2px 12px;">
+          <span style="flex:1;height:1px;background:rgba(192,192,192,0.18);"></span>
+          <span style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">or</span>
+          <span style="flex:1;height:1px;background:rgba(192,192,192,0.18);"></span>
+        </div>
+
+        <button onclick="choosePay('cash')" style="width:100%;padding:14px;background:var(--s2);border:1px solid rgba(192,192,192,0.18);border-radius:var(--r);color:var(--white);font-size:14px;font-weight:600;cursor:pointer;">💵 I'll pay cash in person</button>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;text-align:center;margin-top:8px;">Slot held without a deposit — please show up on time so Bryan can hold the chair.</div>
+
+        <button style="width:100%;padding:8px;background:transparent;border:none;color:var(--muted);font-size:13px;margin-top:10px;cursor:pointer;" onclick="goStep(3)">← Back</button>
       </div>
 
       <!-- STEP 4 — CONFIRM -->
@@ -581,6 +591,9 @@ function setDepositAmount(){
   if(el)el.textContent='$'+svc.price;
 }
 
+var payChoice='zelle';
+function choosePay(method){payChoice=method;goStep(4);}
+
 function goStep(n){
   document.getElementById('step1').style.display=n===1?'block':'none';
   document.getElementById('step2').style.display=n===2?'block':'none';
@@ -602,7 +615,7 @@ function goStep(n){
     document.getElementById('conf-name').textContent=document.getElementById('c-name').value;
     document.getElementById('conf-phone').textContent=document.getElementById('c-phone').value;
     var dep=document.getElementById('conf-deposit');
-    if(dep)dep.textContent='$'+svc.price+' via Zelle';
+    if(dep)dep.textContent=payChoice==='cash'?('$'+svc.price+' — cash in person'):('$'+svc.price+' via Zelle ✓');
   }
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -688,7 +701,7 @@ async function confirmBooking(){
         price:svc.price,
         appointment_date:isoDate,
         appointment_time:selectedTime,
-        notes:((document.getElementById('c-notes').value||'')+' [Deposit $'+svc.price+' via Zelle]').trim(),
+        notes:((document.getElementById('c-notes').value||'')+(payChoice==='cash'?(' [Paying $'+svc.price+' cash in person]'):(' [Deposit $'+svc.price+' via Zelle]'))).trim(),
         status:'upcoming',
         barber:'Bryan'
       })
@@ -723,7 +736,7 @@ async function confirmBooking(){
 }
 
 function resetBooking(){
-  selectedSvc=null;selectedDate=null;selectedTime=null;
+  selectedSvc=null;selectedDate=null;selectedTime=null;payChoice='zelle';
   document.querySelectorAll('.svc-card').forEach(function(c){c.classList.remove('selected');});
   document.getElementById('step1-btn').disabled=true;
   document.getElementById('c-name').value='';
